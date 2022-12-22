@@ -5,6 +5,7 @@ import Search from "./components/Search";
 import Table from "./components/Table";
 import Pagination from "./components/Pagination";
 import Sort from "./components/Sort";
+import Genre from "./components/Genre";
 
 const base_url = process.env.REACT_APP_API_URL;
 
@@ -53,6 +54,11 @@ function App() {
           </div>
           <div className="filter_container">
             <Sort sort={sort} setSort={(sort) => setSort(sort)} />
+            <Genre
+              filterGenre={filterGenre}
+              genres={obj.genres ? obj.genres : []}
+              setFilterGenre={(genre) => setFilterGenre(genre)}
+            />
           </div>
         </div>
       </div>
