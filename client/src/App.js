@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
+import Search from "./components/Search";
 
 const base_url = process.env.REACT_APP_API_URL;
 
@@ -35,6 +36,7 @@ function App() {
       <div className="container">
         <div className="head">
           <img src="./images/logo.png" alt="logo" className="logo" />
+          <Search setSearch={(search) => setSearch(setSearch)} />
         </div>
         <div className="body">
           <div className="table_container"></div>
