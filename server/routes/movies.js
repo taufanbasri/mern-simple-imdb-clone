@@ -1,13 +1,14 @@
 const router = require("express").Router();
 const Movie = require("../models/Movie");
+const movies = require("../config/movies.json");
 
 router.get("/movies", async (req, res) => {
   try {
     const page = parseInt(req.query.page) - 1 || 0;
     const limit = parseInt(req.query.limit) || 5;
     const search = req.query.search || "";
-    const sort = req.query.sort || "rating";
-    const genre = req.query.genre || "All";
+    let sort = req.query.sort || "rating";
+    let genre = req.query.genre || "All";
 
     const genreOptions = [
       "Action",
@@ -24,7 +25,7 @@ router.get("/movies", async (req, res) => {
 
     genre === "All"
       ? (genre = [...genreOptions])
-      : (genre = req.query.split(","));
+      : (genre = req.query.genre.split(","));
 
     req.query.sort ? (sort = req.query.sort.split(",")) : (sort = [sort]);
 
@@ -66,5 +67,22 @@ router.get("/movies", async (req, res) => {
     res.status(500).json({ error: true, message: "Internal Server Error" });
   }
 });
+
+// const insertMovies = async () => {
+//   try {
+//     const docs = await Movie.insertMany(movies);
+
+//     return Promise.resolve(docs);
+//   } catch (error) {
+//     return Promise.reject(error);
+//   }
+// };
+
+// insertMovies()
+//   .then((docs) => console.log(docs))
+//   .catch((err) => console.log(err));
+
+// url example
+// http://localhost:8080/api/movies?page=1&limit=6&genre=Drama,Action&sort=year,desc&search=paras
 
 module.exports = router;

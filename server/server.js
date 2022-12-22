@@ -11,7 +11,7 @@ dbConnect();
 app.use(express.json());
 app.use(cors());
 
-app.use("api", movieRoute);
+app.use("/api", movieRoute);
 
 const port = process.env.PORT || 8080;
 
