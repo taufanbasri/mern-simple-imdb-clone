@@ -30,7 +30,19 @@ function App() {
     getAllMovies();
   }, [filterGenre, page, search, sort]);
 
-  return <h1>Hello World</h1>;
+  return (
+    <div className="wrapper">
+      <div className="container">
+        <div className="head">
+          <img src="./images/logo.png" alt="logo" className="logo" />
+        </div>
+        <div className="body">
+          <div className="table_container"></div>
+          <div className="filter_container"></div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default App;
