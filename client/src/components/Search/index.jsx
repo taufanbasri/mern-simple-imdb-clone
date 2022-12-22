@@ -6,7 +6,7 @@ const Search = ({ setSearch }) => {
       type="text"
       className={styles.search}
       placeholder="Search"
-      onChange={({ curreTarget: input }) => setSearch(input.value)}
+      onChange={({ currentTarget: input }) => setSearch(input.value)}
     />
   );
 };
